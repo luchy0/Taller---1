@@ -1,0 +1,26 @@
+body{
+    background-color: #1c2541 ;
+}
+.ContainerTextHead{
+    width: 50%;
+    margin-top: 8.5%;
+    background-color: #0c7489;
+}
+.ContainerTextHead{
+    width: 50%;
+    margin-top: 8.5%;
+    background-color: #0c7489;
+}
+.container{
+    width: 70%;
+    background-color: #004346;
+}
+.containerFormGestion{
+    width: 50%;
+    background-color: #3a506b;
+    margin-bottom: 5%;
+}
+.containerFormVenta{
+    width: 50%;
+    background-color: #3a506b;
+}
