@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Inventario</title>
     <script src="../js/ejercicio1.js"></script>
     <link rel="stylesheet" href="../css/ejemplo1.css">
+
 </head>
 
 <body>
     <center>
         <div class="ContainerBlock">
+            <h1 id="tituloProductos">Productos</h1>
             <div class="container">
+            
                 <div class="ContainerTextHead">
-                    <h1 id="tituloProductos">Productos</h1>
                     <h4>Gestión de inventario</h4>
                 </div>
 
@@ -23,49 +24,53 @@
                         <div class="containerFormGestion">
                             <div>
                                 <img src="" alt="">
-                                Nombre <input type="text">
+                                Nombre <input type="text" id="nameProductoGestion">
                             </div>
                             <div>
                                 <img src="" alt="">
-                                Precio <input type="number" >
+                                Precio <input type="number" id="precioInventario" >
                             </div>
                             <div>
                                 <img src="" alt="">
-                                Cantidad en Stock <input type="number">
+                                Cantidad en Stock <input type="number" id="cantidadInventario" >
                             </div>
         
-                            <div class="containerButton">
-                                <input type="submit" value="Añadir a Inventario"> <br><br>
-                                <label for="" id="msgProductState">Producto Añadido</label>
-                            </div>
+                         
                         </div>
                         
                     </form>
+                    
 
                     <div class="ContainerTextBase">
-                        <h1 id="tituloProductos">Productos</h1>
-                        <h4>Gestión de inventario</h4>
+                        <h4>Proceso de Venta</h4>
                     </div>
         
                     <form action="">
                         <div class="containerFormVenta">
                             <div class="">
-                                Nombre <input type="text">
+                                Nombre <input type="text" id="nombreVenta" disabled>
                             </div>
         
                             <div>
-                                Cantidad <input type="number">
+                                Cantidad <input type="number" id="cantidadVenta" disabled>
                             </div>
                             
-                            <div>
-                                <input type="submit" value="Realizar Venta">
-                            </div>
+                           
                         </div>
                        
                     </form>
+
+                    <div class="containerButton">
+                        <button id="buttonAnadirProducto"  onclick="validarCampos()">Añadir a Inventario</button><br><br>
+                    </div>
+                    <div>
+                        <button disabled id="buttonVenta" onclick="RealizarVenta()">Realizar Venta</button>
+                    </div>
+                   <div>
+                        <p id="salidaVenta"></p>
+                   </div>
                 </div>
-        
-              
+
             </div>
             
         </div>
