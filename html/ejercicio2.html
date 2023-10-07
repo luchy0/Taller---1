@@ -3,17 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/ejercicio2.js"></script>
+    <link rel="stylesheet" href="../css/ejemplo2.css">
     <title>Generador de Tarjetas de Presentación</title>
 </head>
 <body>
 
-    <div>
-        <input type="text" id="input">
+    <div class="container">
+        <div>
+            <h1>Generador de Targetas de Presentación</h1>
+        </div>
+        <form action="">
+            <div>
+                <div>
+                    Nombre: <input type="text" id="recibirNombre">
+                </div>
+                <div>
+                    Cargo: <input type="text" id="recibirCargo">
+                </div>
+                <div>
+                    Empresa: <input type="text" id="recibirEmpresa">
+                </div>
+                <div>
+                    Contacto: <input type="text" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]" placeholder="ejemplo@empresa.com" id="recibirContacto">
+                </div>
+            </div>
+        </form>
+            
     </div>
 
-    <script>
-        document.getElementById('input').ariaDisabled = true;
-    </script>
+    <div class="tarjetaContainer">
+
+        <div>
+            <h2>Tarjeta de Presentación</h2>
+        </div>
+        <div>
+            <div> 
+                Nombre: <input type="text" readonly id="mostrarNombre">
+            </div>
+            <div>
+                Cargo: <input type="text" readonly id="mostrarCargo">
+            </div>
+            <div>
+                Empresa: <input type="text" readonly id="mostrarEmpresa">
+            </div>
+            <div>
+                Contacto: <input type="text" readonly id="mostrarContacto">
+            </div>
+        </div>
+    </div>
+    <div>
+        <button id="buttGuardar" onclick="CrearTarjeta()">Crear Tarjeta</button>
+    </div>
+    <div>
+        <button onclick="nuevaTarjeta()">Nueva</button>
+    </div>
+    
     
 </body>
 </html>
