@@ -20,7 +20,7 @@ function numeroBarras(){
     var asteriscos = '*'.repeat(tamañoBarra);
 
     //muestra los asteriscos en los inputs
-    barra.value = asteriscos;
+    barra.value = (i+1) +' : '+asteriscos;
 
    }
 
