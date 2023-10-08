@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/ejercicio4.js"></script>
+    <link rel="stylesheet" href="../css/ejercicio4.css">
+    <title>Calculadora de hipoteca</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>Calculadora de Hipoteca</h1>
+        </div>
+
+        <div>
+            <div>
+                Monto del Préstamo: <input type="number" id="monto">
+            </div>
+            <div>
+                Tasa de interés anual: <input type="number" id="interes">
+            </div>
+            <div>
+                Período de amortización en años: <input type="number" id="amortizacion">
+            </div>
+        </div>
+        <div id="resultadoContainer">
+
+        </div>
+
+        <div>
+            <button onclick="calcularhipoteca()">Calcular</button>
+        </div>
+        <div>
+            <button onclick="limpiar()">Nuevo</button>
+        </div>
+    </div>
+  
+  
+</body>
+</html>
