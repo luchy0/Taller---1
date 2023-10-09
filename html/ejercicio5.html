@@ -1,35 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/ejercicio5.css">
-    <script src="../js/ejercicio5.js"></script>
-    <title>Adivinar Palabras</title>
-
+  <title>Adivina la palabra</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <h1>Mente Palabresca</h1>
+  <div class="contenedor">
+    <h1>Adivina la palabra</h1>
+    <div class="palabra">
+      <p id="contenedor-palabra"></p>
     </div>
-    <div>
-        <div id="palabra">
-
-        </div>
-        <div>
-            Adivina!: <input type="text" disabled id="adivina" placeholder="Letra" pattern="[A-Za-z]">
-        </div>
-       
-        <div>
-            <button disabled id="butResolver" onclick="CompararPalabras()">Resolver</button>
-        </div>
-        <div>
-            <button id="generar" onclick="generarPalabras()" >Generar palabra</button>
-        </div>
-        <div>
-            <button  disabled id="butBorrar" onclick="limpiar()">Nueva</button>
-        </div>
+    <div class="letras">
+      <input type="text" id="entrada-letra" placeholder="Introduce una letra">
+      <button id="botón-adivina">Adivinar</button>
     </div>
-
+    <div class="estado">
+      <p id="mensaje-estado"></p>
+      <p id="letras-adivinadas"></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,88 +1,92 @@
-var palabras = ['Montaña', 'Guitarra','Oceano', 'Jirafa', 'Helado', 'Aventura', 'Computadora', 'Elefante', 'Cafe', 'Libertad', 'Unicornio', 'Playa', 'Amistad', 'Astronomia', 'Mariposa', 'Sonrisa', 'Viaje', 'Felicidad', 'Sueño', 'Chocolate'];
+// Variables globales
+let palabras = ["gato", "perro", "casa", "árbol", "sol"];
+let palabraActual;
+let contenedorPalabra;
+let entradaLetra;
+let botónAdivinar;
+let mensajeEstado;
+let intentos = 5;
+let letrasAdivinadas = new Set();
 
-var i = Math.floor(Math.random()*palabras.length);
+// Función para inicializar el juego
+function init() {
+  // Selecciona una palabra aleatoria
+  palabraActual = palabras[Math.floor(Math.random() * palabras.length)];
 
+  // Crea los elementos de la interfaz
+  contenedorPalabra = document.getElementById("contenedor-palabra");
+  entradaLetra = document.getElementById("entrada-letra");
+  botónAdivinar = document.getElementById("botón-adivina");
+  mensajeEstado = document.getElementById("mensaje-estado");
 
-function limpiar(){
-    location.reload();
+  // Muestra la palabra oculta
+  mostrarPalabra();
+
+  // Inicializa la función para mostrar las letras adivinadas
+  mostrarLetrasAdivinadas();
 }
 
-function generarPalabras(){
- 
-    var containerGuiones = document.getElementById('palabra');
-    var p = document.createElement('p');
+// Función para mostrar la palabra oculta
+function mostrarPalabra() {
+  // Crea una cadena de guiones bajos con la longitud de la palabra
+  let palabraHtml = "";
+  for (let i = 0; i < palabraActual.length; i++) {
+    palabraHtml += "_";
+  }
 
-    p.id = 1;
- 
-    p.textContent = '_ '.repeat(palabras[i].length);
- 
-    containerGuiones.appendChild(p);
-
-    var input = document.getElementById('adivina');
-    input.disabled = false;
-    var button = document.getElementById('butResolver');
-    button.disabled = false;
-    var butBorrar = document.getElementById('butBorrar');
-    butBorrar.disabled = false;
-
-    //palabra seleccionada
-    console.log(palabras[i]);
-
-
+  // Establece el contenido del elemento de la palabra
+  contenedorPalabra.innerHTML = palabraHtml;
 }
 
+// Función para adivinar una letra
+function adivinarLetra() {
+  // Obtiene la letra del usuario
+  let letra = entradaLetra.value;
 
-function CompararPalabras() { 
-    
-    var letraInput = document.getElementById('adivina').value;
-
-    //letra del input
-    console.log(letraInput);
-    
-    var palabra = palabras[i];
-
-    var resultadoFinal = [];
-    //validar el input
-
-    if(letraInput == '' || letraInput >= 0 || letraInput < 0){
-        alert('Inserta un dato válido');
-        document.getElementById('adivina').value = '';
+  // Comprueba si la letra está en la palabra
+  let encontrada = false;
+  for (let i = 0; i < palabraActual.length; i++) {
+    if (palabraActual[i] === letra) {
+      // Si la letra está en la palabra, la muestra en la interfaz
+      contenedorPalabra.innerHTML = contenedorPalabra.innerHTML.replace("_", letra);
+      letrasAdivinadas.add(letra);
+      encontrada = true;
+      break;
     }
-    else{
-        for (let i = 0; i < palabra.length; i++) {
-            
-            console.log(palabra[i]);
+  }
 
-            if (letraInput.toLowerCase() == palabra[i].toLowerCase()) {
+  // Si la letra no está en la palabra, resta un intento
+  if (!encontrada) {
+    // Muestra un mensaje de error
+    mensajeEstado.innerHTML = "La letra no está en la palabra. Te quedan " + (5 - intentos) + " intentos";
+    // Reduce el número de intentos
+    intentos--;
+  }
 
-                resultadoFinal.push(palabra[i]);
+  // Comprueba si el usuario ha ganado
+  if (contenedorPalabra.innerHTML === palabraActual) {
+    // Muestra un mensaje de victoria
+    mensajeEstado.innerHTML = "¡Has ganado! La palabra era " + palabraActual;
+  } else if (intentos === 0) {
+    // Muestra un mensaje de derrota
+    mensajeEstado.innerHTML = "Has perdido. La palabra era " + palabraActual;
+  }
+}
 
-            }
-            else{
-                resultadoFinal.push(' _ ');
-            }
-            
-        }
+// Eventos
+botónAdivinar.addEventListener("click", adivinarLetra);
 
-        resultadoFinal = resultadoFinal.join('');
-        console.log(resultadoFinal);//debe salir un solo string
+// Inicializa el juego
+init();
 
-        document.getElementById(1).textContent = resultadoFinal;
+// Función para mostrar las letras adivinadas
+function mostrarLetrasAdivinadas() {
+  // Crea una cadena con las letras adivinadas
+  let letrasAdivinadasHtml = "";
+  for (let letra of letrasAdivinadas) {
+    letrasAdivinadasHtml += letra + " ";
+  }
 
-        document.getElementById('adivina').value = '';
-
-        //obtener el dato del p
-
-        for (let i = 0; i < resultadoFinal.length; i++) {
-            
-            
-            
-        }
-        //convertirlo a array y recorrer sus casillas 
-        //verificar si son ' _ ' y coincide con la posicion del que no es ' _ ' 
-        // y asignar dato 
-        //mostrar dato
-
- 
-    }
+  // Establece el contenido del elemento de las letras adivinadas
+  document.getElementById("letras-adivinadas").innerHTML = letrasAdivinadasHtml;
 }

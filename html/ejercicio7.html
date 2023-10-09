@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Generador de contratos legales</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Generador de contratos legales</h1>
+    <div class="datos">
+      <input type="text" id="nombre-cliente" placeholder="Nombre del cliente">
+      <input type="date" id="fecha-inicio" placeholder="Fecha de inicio">
+      <textarea id="terminos-y-condiciones" placeholder="Términos y condiciones"></textarea>
+    </div>
+    <div class="botón">
+      <button id="botón-generar" onclick="generarContrato()">Generar contrato</button>
+    </div>
+    <div class="contrato">
+      <p id="contrato-html"></p>
+    </div>
+  </div>
+  <script src="../js/ejercicio7.js"></script>
+</body>
+</html>
