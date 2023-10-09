@@ -1,37 +1,43 @@
+let nombreCliente = "";
+let fechaInicio = "";
+let terminosYCondiciones = "";
 
-let plantillaContrato = `
-  **CONTRATO LEGAL**
+function obtenerDatos() {
+  nombreCliente = document.getElementById("nombre-cliente").value;
 
-  Este contrato se celebra entre [nombre del cliente] y [nombre de la empresa], en la fecha de [fecha de inicio].
+  fechaInicio = document.getElementById("fecha-inicio").value;
 
-  En virtud de este contrato, [nombre de la empresa] se compromete a proporcionar los siguientes servicios a [nombre del cliente]:
+  terminosYCondiciones = document.getElementById("terminos-y-condiciones").value;
 
-  [Términos y condiciones]
-
-  [Nombre del cliente] acepta los términos y condiciones de este contrato.
-
-  **Firma de [nombre del cliente]**
-  **Fecha**
-`;
-
-
-function generarContrato() {
-
-  let nombreCliente = document.getElementById("nombre-cliente").value;
-  let fechaInicio = document.getElementById("fecha-inicio").value;
-  let terminosYCondiciones = document.getElementById("terminos-y-condiciones").value;
-
-
-  let contratoHtml = plantillaContrato.replace("[nombre del cliente]", nombreCliente);
-  contratoHtml = contratoHtml.replace("[fecha de inicio]", fechaInicio);
-  contratoHtml = contratoHtml.replace("[Términos y condiciones]", terminosYCondiciones);
-
-
-  document.getElementById("contrato-html").innerHTML = contratoHtml;
+  return [nombreCliente, fechaInicio, terminosYCondiciones];
 }
 
+function generarContrato(datos) {
+  const contrato = `
+    <h1>Contrato legal</h1>
+    <p>Este contrato se celebra entre [nombre del cliente] y [nombre de la empresa] el día [fecha de inicio].</p>
+    <p>Los términos y condiciones del contrato son los siguientes:</p>
+    ${datos[2]}
+  `;
 
-document.getElementById("botón-generar").addEventListener("click", generarContrato);
+  contrato = contrato.replace("[nombre del cliente]", nombreCliente);
+  contrato = contrato.replace("[fecha de inicio]", fechaInicio);
 
+  return contrato;
+}
 
-generarContrato();
+document.getElementById("botón-generar").addEventListener("click", () => {
+  const datos = obtenerDatos();
+
+  const contrato = generarContrato(datos);
+
+  document.getElementById("resultado-contrato").innerHTML = contrato;
+});
+
+document.getElementById("botón-limpiar").addEventListener("click", () => {
+  nombreCliente = "";
+  fechaInicio = "";
+  terminosYCondiciones = "";
+
+  document.getElementById("resultado-contrato").innerHTML = "";
+});

@@ -8,15 +8,20 @@
   <div class="contenedor">
     <h1>Generador de contratos legales</h1>
     <div class="datos">
+      <h2>Datos del cliente</h2>
       <input type="text" id="nombre-cliente" placeholder="Nombre del cliente">
       <input type="date" id="fecha-inicio" placeholder="Fecha de inicio">
-      <textarea id="terminos-y-condiciones" placeholder="Términos y condiciones"></textarea>
     </div>
-    <div class="botón">
-      <button id="botón-generar" onclick="generarContrato()">Generar contrato</button>
+    <div class="terminos">
+      <h2>Términos y condiciones</h2>
+      <textarea id="terminos-y-condiciones"></textarea>
     </div>
-    <div class="contrato">
-      <p id="contrato-html"></p>
+    <div class="botones">
+      <button id="botón-generar">Generar</button>
+      <button id="botón-limpiar">Limpiar</button>
+    </div>
+    <div class="resultado">
+      <p id="resultado-contrato"></p>
     </div>
   </div>
   <script src="../js/ejercicio7.js"></script>
