@@ -1,37 +1,23 @@
-
-let matriz = [];
+let string = "";
 
 function obtenerString() {
-
   return document.getElementById("string").value;
 }
 
+function mayusculasPrimeraLetra(string) {
+  const palabras = string.split(" ");
 
-function mostrarResultado(string) {
+  for (let i = 0; i < palabras.length; i++) {
+    palabras[i] = palabras[i].charAt(0).toUpperCase() + palabras[i].slice(1);
+  }
 
-  let stringMayusculas = mayusculasPrimeraLetra(string);
-
-
-  document.getElementById("resultado").innerHTML = stringMayusculas;
+  return palabras.join(" ");
 }
 
-
-function mostrarResultadoMatriz() {
-
-  matriz = obtenerMatriz();
-
-
-  let pares = getPares(matriz);
-
-  document.getElementById("resultado-matriz").innerHTML = pares.join(", ");
-
-  document.getElementById("botón-generar").addEventListener("click", mostrarResultadoString);
-}
-
-function mostrarResultadoString() {
-  let string = obtenerString();
+document.getElementById("botón-generar").addEventListener("click", () => {
+  string = obtenerString();
 
   let stringMayusculas = mayusculasPrimeraLetra(string);
 
   document.getElementById("resultado").innerHTML = stringMayusculas;
-}
+});

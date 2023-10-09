@@ -1,48 +1,29 @@
-
 let matriz = [];
 
-
 function obtenerMatriz() {
-  
-  matriz = document.getElementById("matriz").value.split(",");
+  matriz = document.getElementById("matriz").value.split("");
 
-  
   matriz = matriz.map(numero => parseInt(numero));
 
-  
   return matriz;
 }
 
+function obtenerNumerosPares() {
+  let numerosPares = [];
 
-function getPares() {
-  
-  let pares = [];
-
-  
   for (const numero of matriz) {
-
-    if (numero % 2 == 0) {
-    
-      pares.push(numero);
+    if (numero % 2 === 0) {
+      numerosPares.push(numero);
     }
   }
-  
 
-  return pares;
+  return numerosPares;
 }
 
-
 document.getElementById("botón-generar").addEventListener("click", () => {
-
   matriz = obtenerMatriz();
 
+  let numerosPares = obtenerNumerosPares();
 
-  let pares = getPares(matriz);
-
-  
-  document.getElementById("resultado-matriz").textContent = pares.join(", ");
-
-  
+  document.getElementById("resultado").innerHTML = numerosPares.join(" ");
 });
-
-  
